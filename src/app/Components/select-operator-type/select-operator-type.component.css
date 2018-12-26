@@ -1,0 +1,36 @@
+.vtabs .tab-content{
+	padding: 0px 10px;
+}
+
+.p-t-0{
+	padding-top: 0!important;
+}
+.a-btn{
+	color: #000; 
+}
+
+code{
+	color: #d26a0b;
+}
+.btn-warning, .btn-warning:hover, .btn-warning.focus, .btn-warning:focus
+{
+	background-color: #303030; color: #f7f200; border: 1px solid #000;
+}
+.customvtab .tabs-vertical li .nav-link.active, .customvtab .tabs-vertical li .nav-link:focus, .customvtab .tabs-vertical li .nav-link:hover{
+	border-right: 2px solid #ffbc34;
+    color: #ffbc34;
+}
+
+@media (min-width:768px){
+	.card-box-shadows, .login-driver .card-body{
+	    box-shadow: 0 2px 2px rgba(0,0,0,.3);
+	}
+	.card{padding: 1.25rem;}
+}
+
+@media (min-width:320px){
+	.card-box-shadows, .login-driver .card-body{
+	    box-shadow:none;
+	}
+	.card-body{padding: 0;}
+}

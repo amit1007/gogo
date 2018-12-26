@@ -1,0 +1,53 @@
+		<!-- ============================================================== -->
+		<!-- Left Sidebar - style you can find in sidebar.scss  -->
+		<!-- ============================================================== -->
+<aside class="left-sidebar">
+	<!-- Sidebar scroll-->
+	<div class="scroll-sidebar">
+		<!-- User Profile-->
+		<div class="user-profile">
+			<div class="user-pro-body">
+				<div><img src="../assets/node_modules/dropify/src/images/driver-img.jpg" alt="user-img" class="img-circle"></div>
+				<div class="dropdown">
+					<a href="#" class="dropdown-toggle u-dropdown link hide-menu" data-toggle="dropdown" >Hanna Gover<span class="caret"></span></a>
+					<div class="dropdown-menu animated">
+						<a routerLink="/myprofile" routerLinkActive="active" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+						<div class="dropdown-divider"></div>
+						<a (click)="LogOut()" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Sidebar navigation-->
+		<nav class="sidebar-nav">
+			<ul id="sidebarnav">
+				<li> <a class="waves-effect waves-dark" routerLink="/dashbord" routerLinkActive="active" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">Dashboard</span></a></li>
+				<li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)"><i class="fas fa-truck"></i><span class="hide-menu">My Rides <span class="caret"></span></span></a>
+					<ul class="dropdown-menu">
+						<li><a routerLink="/myrides" routerLinkActive="active">My Rides</a></li>
+						<li><a routerLink="/totalrides" routerLinkActive="active">Total Rides</a></li>
+						<li><a routerLink="/successfulrides" routerLinkActive="active">Successful Rides</a></li>
+						<li><a routerLink="/bookedrides" routerLinkActive="active">Booked Rides</a></li>
+						<li><a routerLink="/rejectedrides" routerLinkActive="active">Rejected Rides</a></li>
+						<li><a routerLink="/cancelledrides" routerLinkActive="active">Cancelled Rides</a></li>
+					</ul>
+				</li>
+				<li> <a class="waves-effect waves-dark" routerLink="/myvehicles" routerLinkActive="active" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">My Vehicles</span></a></li>
+				<li> <a class="waves-effect waves-dark" routerLink="/mydrivers" routerLinkActive="active" aria-expanded="false"><i class="icon-speedometer"></i><span class="hide-menu">My Drivers</span></a></li>
+					   <!--  <li> <a class="waves-effect waves-dark" href="total-revenue.php" aria-expanded="false"><i class=" fas fa-rupee-sign"></i></i><span class="hide-menu">Total Revenue</span></a></li> -->
+						<!-- <li> <a class="waves-effect waves-dark" routerLink="/" routerLinkActive="active" aria-expanded="false"><i class="far fa-circle text-success"></i><span class="hide-menu">Logout</span></a></li> -->
+				<li> <a class="waves-effect waves-dark" aria-expanded="false" (click)="LogOut()"><i class="far fa-circle"></i><span class="hide-menu">Logout</span></a></li>
+			</ul>
+		</nav>
+		<!-- End Sidebar navigation -->
+	</div>
+	<!-- End Sidebar scroll-->	
+</aside>
+		<!-- ============================================================== -->
+		<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+		<!-- ============================================================== -->
+
+<div>	
+	<router-outlet></router-outlet>	
+</div>

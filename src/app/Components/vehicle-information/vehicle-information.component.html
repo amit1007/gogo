@@ -1,0 +1,350 @@
+<div class="tab-content">
+	<form class="form-body" [formGroup]="vehicleInfoForm" (ngSubmit)="onSubmitVehicleInfo()" enctype="multipart/form-data" method="POST">
+		<div class="row">
+
+			<!-- <div class="form-group col-md-12">
+					<input type="checkbox" class="icheckbox_flat-yellow checked" id="flat-checkbox-2" checked data-checkbox="icheckbox_flat-yellow">
+	                <label for="flat-checkbox-2"></label>
+		    </div> -->
+		    
+		    <div class="form-group col-md-12">
+				<label class="col-md-12">Owner is other than driver<sup class="sup-e">*</sup></label>
+				<div class="col-md-12 row">
+					<div class="col-md-3">
+						<input type="radio" value="0" formControlName="op_v_ow_driver" [ngClass]="{ 'is-invalid': submitted1 && v.op_v_ow_driver.errors}" (click)="checkownership($event.target.value)"> No 
+					</div>
+					<div class="col-md-3">
+						<input type="radio" value="1" formControlName="op_v_ow_driver" [ngClass]="{ 'is-invalid': submitted1 && v.op_v_ow_driver.errors}" (click)="checkownership($event.target.value)"> Yes
+					</div>
+				</div>
+				<div *ngIf="submitted1 && v.op_v_ow_driver.errors" class="invalid-feedback">
+					<div *ngIf="v.op_v_ow_driver.errors.required">Select Input</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" *ngIf="isOwner">
+			<div class="form-group col-md-6">
+				<label class="col-md-12">Vehicle owner Name</label>
+				<div class="col-md-12">
+					<input type="text" placeholder="Enter Vehicle owner’s Name" class="form-control form-control-line" id="vehicle-owner" formControlName="veh_owner_name" [ngClass]="{ 'is-invalid': submitted1 && v.veh_owner_mobile_no.errors}">
+					<div *ngIf="submitted1 && v.veh_owner_name.errors" class="invalid-feedback">
+						<div *ngIf="v.veh_owner_name.errors.required">Owner name is required</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group col-md-6">
+				<label class="col-md-12">Owner mobile no (If Owner different from driver )</label>
+				<div class="col-md-12">
+					<input type="text" placeholder="Enter Owner mobile no" class="form-control form-control-line" id="owner-mobile-no" formControlName="veh_owner_mobile_no" [ngClass]="{ 'is-invalid': submitted1 && v.veh_owner_mobile_no.errors}">
+					<div *ngIf="submitted1 && v.veh_owner_mobile_no.errors" class="invalid-feedback">
+						<div *ngIf="v.veh_owner_mobile_no.errors.required">Vehicle owner mobile is required</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">	
+			<div class="form-group col-md-12">
+				<label class="col-md-12">Vehicle Wheel Type <sup class="sup-e">*</sup></label>
+				<div class="col-md-12 row">
+					<div class="col-md-3">
+						<input type="radio" value="3" formControlName="veh_wheel_type" [ngClass]="{ 'is-invalid': submitted1 && v.veh_wheel_type.errors}" (click)="getWheelModel($event.target.value)"> Three Wheeler
+					 	<!--(click)="checkWheelType($event.target.value)" -->
+				 	</div>
+				 	<div class="col-md-3">
+						<input type="radio" value="4" formControlName="veh_wheel_type" [ngClass]="{ 'is-invalid': submitted1 && v.veh_wheel_type.errors}" (click)="getWheelModel($event.target.value)"> Four Wheeler
+					</div>
+					<div *ngIf="submitted1 && v.veh_wheel_type.errors" class="invalid-feedback">   
+		                <div *ngIf="v.veh_wheel_type.errors.required">Select wheel type available</div>
+		        	</div> 
+		        </div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label class="col-md-12">Vehicle Model<sup class="sup-e">*</sup></label>
+				<div class="col-md-12">
+					<select class="form-control custom-select" formControlName="veh_model" [ngClass]="{ 'is-invalid': submitted1 && v.veh_model.errors}">
+						<!-- <option [ngValue]="undefined" selected="selected">Select Vehicle Model Type</option> -->
+						<option [ngValue]="undefined">Select Vehicle Model Type </option>
+						<!--<option [ngValue]="1">Piaggio Ape Xtra LDx</option>
+						<option [ngValue]="2">Piaggio Porter 700</option>
+						<option [ngValue]="3">Tata ACE (Chotta Haathi)</option>
+						<option [ngValue]="4">Mahindra Alfa </option>-->
+						<option [value]="models" *ngFor="let models of veh_model">{{models}}</option>
+					</select>
+					<div *ngIf="submitted1 && v.veh_model.errors" class="invalid-feedback">
+						<div *ngIf="v.veh_model.errors.required">Select Vehicle Wheel Type</div>
+					</div> 
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-12">Vehicle Availability<sup class="sup-e">*</sup></label>
+				<div class="col-md-12">
+					<select class="form-control custom-select" formControlName="veh_type" [ngClass]="{ 'is-invalid': submitted1 && v.veh_type.errors}">
+						<option [ngValue]="undefined" selected="selected">Select Vehicle Wheel Type</option>
+						<option [ngValue]="1">Open</option>
+						<option [ngValue]="2">Closed (Hard top)</option>
+						<option [ngValue]="3">Tarpaulin covered (Soft top)</option>
+					</select>
+					<div *ngIf="submitted1 && v.veh_type.errors" class="invalid-feedback">
+						<div *ngIf="v.veh_type.errors.required">Select Vehicle Wheel Type</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-6 ">
+				<label class="col-md-12">Vehicle Capacity</label>
+				<div class="col-md-12">
+					<input type="text" placeholder="560" class="form-control form-control-line" formControlName="veh_capacity">				
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-12">Carriage Space Dimension (LxBxH) mm</label>
+				<div class="col-md-12">
+					<input type="text" placeholder="1480 x 1400 x 285" class="form-control form-control-line" formControlName="veh_dimension">
+				</div>
+			</div> 
+		</div>
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label class="col-md-12">Vehicle Registration No <sup class="sup-e">*</sup></label>
+				<div class="col-md-12">
+					<div class="row m-0">
+						<input type="text" class="col-2 form-control uppercase" placeholder="MH" formControlName="veh_num1" [ngClass]="{ 'is-invalid': submitted1 && v.veh_num1.errors}" maxlength="2" (input)="onSearchChange($event.target.value)">
+
+						<input type="text" class="col-3 form-control" placeholder="12" formControlName="veh_num2" [ngClass]="{ 'is-invalid': submitted1 && v.veh_num2.errors}" maxlength="2" (input)="onSearchChange1($event.target.value)">
+					
+					
+						<input type="text" class="col-3 form-control uppercase" placeholder="AD" formControlName="veh_num3" [ngClass]="{ 'is-invalid': submitted1 && v.veh_num3.errors}" maxlength="2" (input)="onSearchChange($event.target.value)">
+					
+						<input type="text" class="col-4 form-control" Placeholder="9066" formControlName="veh_num4" [ngClass]="{ 'is-invalid': submitted1 && v.veh_num4.errors}" maxlength="4" (input)="onSearchChange1($event.target.value)">
+					</div>
+					<div class="row">
+						<div class="reg_error col-12 is-invalid" [innerHtml]="testhtml"></div>
+						<div class="reg_error col-12 is-invalid" [innerHtml]="testhtml1"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="form-group col-md-6">
+				<label class="col-md-12">Vehicle Base Station / Location<sup class="sup-e">*</sup></label>
+				<div class="col-md-12">
+					<input type="text" placeholder="Enter Vehicle Base Station / Location" class="form-control form-control-line" formControlName="veh_city" [ngClass]="{ 'is-invalid': submitted1 && v.veh_city.errors}">
+					<div *ngIf="submitted1 && v.veh_city.errors" class="invalid-feedback">
+						<div *ngIf="v.veh_city.errors.required">Select City </div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="row col-md-12 m-0">
+				<div class="form-group col-md-6">
+					<label>Working Days<sup class="sup-e">*</sup></label>
+					<div class="row m-0">
+						<div class="col-md-6 p-0">
+							<label>From Days</label>
+							<!-- <select class="form-control custom-select" formControlName="veh_working_days" [ngClass]="{ 'is-invalid': submitted1 && v.veh_working_days.errors}" multiple>
+								<option [value]="0" selected="selected">Closed</option>
+								<option [value]="1">Monday</option>
+								<option [value]="2">Tuesday</option>
+								<option [value]="3">Wednesday</option>
+								<option [value]="4">Thursday </option>
+								<option [value]="5">Friday</option>
+								<option [value]="6">Saturday</option>
+								<option [value]="4">Sunday</option>
+							</select> -->
+							<select class="form-control" formControlName="veh_working_days_frm" [ngClass]="{ 'is-invalid': submitted1 && v.veh_working_days_frm.errors}">
+								<option [value]="0" selected="selected">Closed</option>
+								<option [value]="1">Monday</option>
+								<option [value]="2">Tuesday</option>
+								<option [value]="3">Wednesday</option>
+								<option [value]="4">Thursday </option>
+								<option [value]="5">Friday</option>
+								<option [value]="6">Saturday</option>
+								<option [value]="4">Sunday</option>
+							</select>
+							<div *ngIf="submitted1 && v.veh_working_days_frm.errors" class="invalid-feedback">
+								<div *ngIf="v.veh_working_days_frm.errors.required">Select Working Days</div>
+							</div>
+
+							<!-- <input type="date" id="date-format" class="form-control" placeholder="Saturday 24 June 2017 - 21:44" formControlName="working_hours_from" [ngClass]="{ 'is-invalid': submitted1 && v.working_hours_from.errors}" ngbDatepicker (dateSelect)="onDateSelect($event)"> -->
+
+							<!-- <input class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker #d3="ngbDatepicker" formControlName="working_hours_from" [ngClass]="{ 'is-invalid': submitted1 && v.working_hours_from.errors}">
+							<div class="input-group-append">
+								<button class="btn btn-outline-secondary calendar" (click)="d3.toggle()" type="button"></button>
+							</div> -->	
+						</div>
+						<div class="col-md-6 p-0">
+							<label>To Days</label>
+							<!-- <select class="form-control custom-select" formControlName="veh_working_days" [ngClass]="{ 'is-invalid': submitted1 && v.veh_working_days.errors}" multiple>
+								<option [value]="0" selected="selected">Closed</option>
+								<option [value]="1">Monday</option>
+								<option [value]="2">Tuesday</option>
+								<option [value]="3">Wednesday</option>
+								<option [value]="4">Thursday </option>
+								<option [value]="5">Friday</option>
+								<option [value]="6">Saturday</option>
+								<option [value]="4">Sunday</option>
+							</select> -->
+							<select class="form-control to-d" formControlName="veh_working_days_to" [ngClass]="{ 'is-invalid': submitted1 && v.veh_working_days_to.errors}">
+								<option [value]="1">Monday</option>
+								<option [value]="2">Tuesday</option>
+								<option [value]="3">Wednesday</option>
+								<option [value]="4">Thursday </option>
+								<option [value]="5">Friday</option>
+								<option [value]="6">Saturday</option>
+								<option [value]="4">Sunday</option>
+							</select>
+							<div *ngIf="submitted1 && v.veh_working_days_to.errors" class="invalid-feedback">
+								<div *ngIf="v.veh_working_days_to.errors.required">Select Working Days</div>
+							</div>
+
+							<!-- <input type="date" id="date-format" class="form-control" placeholder="Saturday 24 June 2017 - 21:44" formControlName="working_hours_from" [ngClass]="{ 'is-invalid': submitted1 && v.working_hours_from.errors}" ngbDatepicker (dateSelect)="onDateSelect($event)"> -->
+
+							<!-- <input class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker #d3="ngbDatepicker" formControlName="working_hours_from" [ngClass]="{ 'is-invalid': submitted1 && v.working_hours_from.errors}">
+							<div class="input-group-append">
+								<button class="btn btn-outline-secondary calendar" (click)="d3.toggle()" type="button"></button>
+							</div> -->	
+						
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="m-l m-m-l">Working Date-Time</label>
+					<div class="row m-0">
+						<div class="form-group col-sm-6 p-r-0 m-p-0">
+							<label>From</label>
+						    <div class="input-group">
+						    	<input type="text" class="form-control cal" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker [footerTemplate]="footerTemplate" #d="ngbDatepicker" formControlName="veh_working_from" [ngClass]="{ 'is-invalid': submitted1 && v.veh_working_from.errors}">					    
+							    <div class="input-group-append">
+							        <button class="btn calendar" (click)="d.toggle()" type="button"><i class="icon-calender"></i></button>
+							    </div>
+							    <div *ngIf="submitted1 && v.veh_working_from.errors" class="invalid-feedback">
+									<div *ngIf="v.veh_working_from.errors.required">Select Working Days</div>
+								</div>
+								<ng-template #footerTemplate>
+								  <hr class="my-0">
+								  <button class="btn btn-primary btn-sm m-2 float-left" (click)="model = today; d.close()">Today</button>
+								  <button class="btn btn-secondary btn-sm m-2 float-right" (click)="d.close()">Close</button>
+								</ng-template>
+							</div>
+						</div>
+						
+						<div class="form-group col-sm-6 p-r-0 m-p-0">
+							<label>To</label>
+						    <div class="input-group">
+						      <input type="text" class="form-control cal" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker [footerTemplate]="footerTemplate" #dt="ngbDatepicker" formControlName="veh_working_to" [ngClass]="{ 'is-invalid': submitted1 && v.veh_working_to.errors}">
+						      <div class="input-group-append">
+						        <button class="btn btn-outline-secondary calendar" (click)="dt.toggle()" type="button"><i class="icon-calender"></i></button>
+						      </div>
+						    </div>
+						    <div *ngIf="submitted1 && v.veh_working_to.errors" class="invalid-feedback">
+								<div *ngIf="v.veh_working_to.errors.required">Select Working Days</div>
+							</div>
+							<ng-template #footerTemplate>
+							  <hr class="my-0">
+							  <button class="btn btn-primary btn-sm m-2 float-left" (click)="model = today; dt.close()">Today</button>
+							  <button class="btn btn-secondary btn-sm m-2 float-right" (click)="dt.close()">Close</button>
+							</ng-template>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<div class="card m-l">
+					<h4 class="card-title">Upload Vehicle Images</h4>
+					<hr>
+					<label for="input">Max Image Size 1 MB</label>
+					<input type="file" id="input-file-now-custom" class="dropify" (change)="onSelectFile($event)" formControlName="veh_images" multiple/>
+					<!-- [ngClass]="{ 'is-invalid': submitted1 && v.veh_images.errors}" -->
+					<!-- <div *ngIf="submitted1 && v.veh_images.errors" class="invalid-feedback">
+						<div *ngIf="v.veh_images.errors.required">Select Vehicle Picture</div>
+					</div> -->
+				</div>
+				
+			</div>
+			<div>
+			    <img *ngFor="let url of urls" [src]="url" class="rounded mb-3" height="100" width="100">
+			</div>
+		</div>
+		<!-- *ngIf="operator_type==1" -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card m-l">
+					<h4 class="card-title">Upload Documents</h4>
+					<hr>
+					<div class="form-group">
+						<div class="row m-0">
+							<label class="col-md-3 p-0">PAN Card</label>
+							<input type="file" id="upload_pan" class="in-up dropify col-md-4" formControlName="upload_pan" [ngClass]="{ 'is-invalid': submitted1 && v.upload_pan.errors}"/>
+							<div *ngIf="submitted1 && v.upload_pan.errors" class="invalid-feedback">
+								<div *ngIf="v.upload_pan.errors.required">Upload PAN </div>
+							</div>
+							<div class="row col-sm-5">
+								<div class="col-sm-4 label var-doc label-success">Is Verified</div>
+							</div>			
+						</div>
+					</div>
+					<hr>
+					<div class="form-group">
+						<div class="row m-0">
+							<label class="col-md-3 p-0">Aadhar card</label>
+							<input type="file" id="upload_aadhar" class="in-up dropify col-md-4" formControlName="upload_adhar" [ngClass]="{ 'is-invalid': submitted1 && v.upload_adhar.errors}"/>
+							<div *ngIf="submitted1 && v.upload_adhar.errors" class="invalid-feedback">
+								<div *ngIf="v.upload_adhar.errors.required">Upload Adhar </div>
+							</div>
+							<div class="row col-sm-5">
+								<div class="col-sm-4 label var-doc label-danger">Waiting for Verify</div>
+							</div>
+						</div>
+					</div>
+					<hr>
+					<div class="form-group">
+						<div class="row m-0">
+							<label class="col-md-3 p-0">Driving Licence</label>
+							<input type="file" id="upload_driving_licence" class="in-up dropify col-md-4" formControlName="upload_driving_licence" [ngClass]="{ 'is-invalid': submitted1 && v.upload_driving_licence.errors}"/>
+							<div *ngIf="submitted1 && v.upload_driving_licence.errors" class="invalid-feedback">
+								<div *ngIf="v.upload_driving_licence.errors.required">Upload Driving Licence </div>
+							</div>
+							<div class="row col-sm-5">
+								<div class="col-sm-4 label var-doc label-success">Is Verified</div>
+							</div>
+						</div>					
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row col-md-12">
+			<div class="form-group">
+				<div class="col-md-12 p-0">
+					<label class="custom-control custom-checkbox m-b-0">
+						<input type="checkbox" class="icheckbox_flat-yellow checked" id="minimal-checkbox-3" formControlName="veh_terms_condition" [ngClass]="{ 'is-invalid': submitted1 && v.veh_terms_condition.errors}" (change)="changeVTCondition($event.target.checked)" [checked]="is_veh_tc">
+
+					
+						<a href="#" data-toggle="modal" data-target=".bs-example-modal-lg" (click)="check_veh_terms_condition()">I have read and agree to the Terms and Conditions</a>
+					
+						<div *ngIf="submitted1 && v.veh_terms_condition.errors" class="invalid-feedback">
+							<div *ngIf="v.veh_terms_condition.errors.required">You must agree terms and conditions.</div>
+						</div>
+
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="row col-12">	
+			<div class="form-group btn-m">
+				<div class="col-md-12">
+	                <button (click)="goBack()" class="btn btn-dark">Previous</button>
+					<!-- type="button"  -->
+					<button class="btn btn-warning">Next</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

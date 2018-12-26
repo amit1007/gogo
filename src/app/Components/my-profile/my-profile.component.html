@@ -1,0 +1,168 @@
+<app-header></app-header>
+<app-left-sidebar></app-left-sidebar>
+<div class="page-wrapper">
+	<div class="container-fluid p-forms">
+		<div class="row page-titles">
+			<div class="col-md-5 align-self-center">
+				<h4 class="text-themecolor">Profile</h4>
+			</div>
+			<div class="col-md-7 align-self-center text-right">
+				<div class="d-flex justify-content-end align-items-center">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+						<li class="breadcrumb-item active">My Profile</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="nav-wrap">
+				<div class="liner"></div>
+				<ul class="nav nav-tabs" id="myTab">
+				<li class="nav-item"> 
+					<a class="nav-link active" data-toggle="tab" href="#personal" role="tab">
+						<span class="round-tabs one">
+							<i class="glyphicon glyphicon-user"></i>
+						</span>
+					</a> 
+				</li>
+				<li class="nav-item"> 
+					<a class="nav-link" data-toggle="tab" href="#vehicle" role="tab">
+						<span class="round-tabs two">
+							<i class="fas fa-truck"></i>
+						</span> 
+					</a> 
+				</li>
+				<li class="nav-item"> 
+					<a class="nav-link" data-toggle="tab" href="#add-vehicle" role="tab">
+						<span class="round-tabs three">
+							<i class="fas fa-truck"></i>
+						</span> 
+					</a> 
+				</li>
+				<li class="nav-item"> 
+					<a class="nav-link" data-toggle="tab" href="#add-driver" role="tab">
+						<span class="round-tabs four">
+							<i class="glyphicon glyphicon-user"></i>
+						</span>
+					</a> 
+				</li>
+				<li class="nav-item"> 
+					<a class="nav-link" data-toggle="tab" href="#business" role="tab">
+						<span class="round-tabs five">
+							<i class="fas fa-shopping-bag"></i>
+						</span>
+					</a> 
+				</li>
+				<li class="nav-item"> 
+					<a class="nav-link" data-toggle="tab" href="#bank" role="tab">
+						<span class="round-tabs six">
+							<i class="fas fa-university"></i>
+						</span>
+					</a> 
+				</li>
+				<li class="nav-item"> 
+					<a class="nav-link" data-toggle="tab" href="#pay" role="tab">
+						<span class="round-tabs seven">
+							<i class="glyphicon glyphicon-ok"></i>
+						</span>
+					</a> 
+				</li>
+				</ul>
+			</div>
+			<div class="card">					<!-- Tab panes -->
+				<div class="tab-content tabcontent-border">
+					<div class="tab-pane active" id="personal" role="tabpanel">
+						<div class="card-header" role="tab" id="headingOne1">
+							<div class="row">
+								<div class="col-11">Personal Information </div>
+								<div class="col-1 text-center"><i class="fas fa-angle-down"></i> </div>
+							</div>
+						</div>
+						<div class="card-body profile-form-border">
+								<!--personal information form-->
+								<app-personal-information></app-personal-information>
+						</div>
+										
+					</div>
+					<div class="tab-pane" id="vehicle" role="tabpanel">
+						<div class="card-header" role="tab" id="headingOne1">
+							<div class="row">
+								<div class="col-11">Vehicle Information</div>
+								<div class="col-1 text-center"><i class="fas fa-angle-down"></i> </div>
+							</div>
+						</div>
+						<div class="card-body profile-form-border">
+								<!--vehicle information form-->
+								<app-vehicle-information></app-vehicle-information>
+						</div>
+					</div>
+					<div class="tab-pane" id="add-vehicle" role="tabpanel">
+						<div class="card-header" role="tab" id="headingOne1">
+							<div class="row">
+								<div class="col-11">Add Vehicle</div>
+								<div class="col-1 text-center"><i class="fas fa-angle-down"></i> </div>
+							</div>
+						</div>
+						<div class="card-body profile-form-border">
+								<!--add more vehicle information form-->
+								<app-add-more-vehicle></app-add-more-vehicle>
+						</div>
+					</div>
+					<div class="tab-pane" id="add-driver" role="tabpanel">
+						<div class="card-header" role="tab" id="headingOne1">
+							<div class="row">
+								<div class="col-11">Add Driver</div>
+								<div class="col-1 text-center"><i class="fas fa-angle-down"></i> </div>
+							</div>
+						</div>
+						<div class="card-body profile-form-border">
+								<!--add driver information form-->
+								<app-add-more-driver></app-add-more-driver>
+						</div>
+					</div>
+					<div class="tab-pane" id="business" role="tabpanel">
+						<div class="card-header" role="tab" id="headingOne1">
+							<div class="row">
+								<div class="col-11">Business Detail</div>
+								<div class="col-1 text-center"><i class="fas fa-angle-down"></i> </div>
+							</div>
+						</div>
+						<div class="card-body profile-form-border">
+								<!--personal information form-->
+								<app-business-information></app-business-information>
+						</div>
+					</div>
+					<div class="tab-pane" id="bank" role="tabpanel">
+						<div class="card-header" role="tab" id="headingOne1">
+							<div class="row">
+								<div class="col-11">Payment/Bank Account details</div>
+								<div class="col-1 text-center"><i class="fas fa-angle-down"></i> </div>
+							</div>
+						</div>
+						<div class="card-body profile-form-border">
+								<!--personal information form-->
+								<app-payment-information></app-payment-information>
+						</div>
+					</div>
+					<div class="tab-pane" id="pay" role="tabpanel">
+						<div class="card-header" role="tab" id="headingOne1">
+							<div class="row">
+								<div class="col-11">Pay</div>
+								<div class="col-1 text-center"><i class="fas fa-angle-down"></i> </div>
+							</div>
+						</div>
+						<div class="card-body profile-form-border">
+								<!--personal information form
+								<app-payment-information></app-payment-information>-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<app-right-sidebar></app-right-sidebar>
+	</div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,178 @@
+<app-header></app-header>
+<app-left-sidebar></app-left-sidebar>
+<!-- ============================================================== -->
+	<!-- Page wrapper  -->
+	<!-- ============================================================== -->
+	<div class="page-wrapper">
+		<!-- ============================================================== -->
+		<!-- Container fluid  -->
+		<!-- ============================================================== -->
+		<div class="container-fluid">
+			<!-- ============================================================== -->
+			<!-- Bread crumb and right sidebar toggle -->
+			<!-- ============================================================== -->
+			<div class="row page-titles">
+				<div class="col-md-5 align-self-center">
+					<h4 class="text-themecolor">My Drivers</h4>
+				</div>
+				<div class="col-md-7 align-self-center text-right">
+					<div class="d-flex justify-content-end align-items-center">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+							<li class="breadcrumb-item active">My Drivers</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+			<!-- ============================================================== -->
+			<!-- End Bread crumb and right sidebar toggle -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- Start Page Content -->
+			<!-- ============================================================== -->
+			<!-- Card -->
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Add Driver</h4>
+				</div>
+				<form class="form-body" [formGroup]="addDriverForm" (ngSubmit)="addDriver()" enctype="multipart/form-data" method="POST">
+					<div class="form-group">
+						<label class="col-md-12">Driver Name</label>
+						<div class="col-md-12">
+							<input type="text" placeholder="Enter Driver Name" class="form-control form-control-line" id="driver-name" formControlName="d_name" [ngClass]="{ 'is-invalid': submitted && d.d_name.errors}">
+							<div *ngIf="submitted && d.d_name.errors" class="invalid-feedback">
+			                    <div *ngIf="d.d_name.errors.required">Driver name is required</div>
+		                	</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-12">Driver Mobile Number</label>
+						<div class="col-md-12">
+							<input type="text" placeholder="Enter Driver mobile no" class="form-control form-control-line" id="driver-mobile-no" formControlName="d_mobile" [ngClass]="{ 'is-invalid': submitted && d.d_mobile.errors}">
+							<div *ngIf="submitted && d.d_mobile.errors" class="invalid-feedback">
+			                    <div *ngIf="d.d_mobile.errors.required">Vehicle owner mobile is required</div>
+		                	</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-12">Driver Registration No</label>
+						<div class="col-md-12">
+							<input type="text" class="col-2 form-control form-control-line" placeholder="MH" formControlName="d_num1" [ngClass]="{ 'is-invalid': submitted && d.d_num1.errors}">
+							
+							<input type="text" class="col-3 form-control form-control-line" placeholder="12" formControlName="d_num2" [ngClass]="{ 'is-invalid': submitted && d.d_num2.errors}">
+							
+							
+							<input type="text" class="col-3 form-control form-control-line" placeholder="AD" formControlName="d_num3" [ngClass]="{ 'is-invalid': submitted && d.d_num3.errors}">
+							
+							<input type="text" class="col-3 form-control form-control-line" Placeholder="9066" formControlName="d_num4" [ngClass]="{ 'is-invalid': submitted && d.d_num4.errors}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-12">Driving Licence No</label>
+						<div class="col-md-12">
+							<input type="text" placeholder="Enter Driving Licence No" class="form-control form-control-line" formControlName="d_driver_licence_no" [ngClass]="{ 'is-invalid': submitted && d.d_driver_licence_no.errors}">
+							<div *ngIf="submitted && d.d_driver_licence_no.errors" class="invalid-feedback">
+			                    <div *ngIf="d.d_driver_licence_no.errors.required">Enter Driving Licence No</div>
+		                	</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-12">Validity of Driving Licence</label>
+						<div class="col-md-12 input-group">
+							<input class="form-control" placeholder="yyyy-mm-dd"
+					             formControlName="d_driving_validity" [ngClass]="{ 'is-invalid': submitted && d.d_driving_validity.errors}" ngbDatepicker #d2="ngbDatepicker" [ngClass]="{ 'is-invalid': submitted && d.d_driving_validity.errors}">
+					      	<div class="input-group-append">
+			        			<button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
+					      	</div>	
+					      	<div *ngIf="submitted && d.d_driving_validity.errors" class="invalid-feedback">
+			                    <div *ngIf="d.d_driving_validity.errors.required">Enter Validity of Driving Licence </div>
+		                	</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-12">Driver Base Location</label>
+						<div class="col-md-12">
+							<input type="text" placeholder="Enter Driver Base Location" class="form-control form-control-line" formControlName="d_city" [ngClass]="{ 'is-invalid': submitted && d.d_city.errors}">
+							<div *ngIf="submitted && d.d_city.errors" class="invalid-feedback">
+			                    <div *ngIf="d.d_city.errors.required">Select City </div>
+		                	</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-12">Working Hrs</label>
+						<div class="row col-md-12">
+							<div class="col-md-6 input-group">
+								<label>From</label>
+								<input class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker #d3="ngbDatepicker" formControlName="d_working_hours_from" [ngClass]="{ 'is-invalid': submitted && d.d_working_hours_from.errors}">
+						      	<div class="input-group-append">
+				        			<button class="btn btn-outline-secondary calendar" (click)="d3.toggle()" type="button"></button>
+						      	</div>	
+							</div>
+							<div class="col-md-6 input-group">
+								<label>To</label>
+								<input class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker #d4="ngbDatepicker" formControlName="d_working_hours_to" [ngClass]="{ 'is-invalid': submitted && d.d_working_hours_to.errors}">
+						      	<div class="input-group-append">
+				        			<button class="btn btn-outline-secondary calendar" (click)="d4.toggle()" type="button"></button>
+						      	</div>	
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<h4 class="card-title">Upload Documents</h4>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-3 m-b">PAN Card</label>
+						<input type="file" id="upload_pan" class="dropify col-md-4" formControlName="d_upload_pan" [ngClass]="{ 'is-invalid': submitted && d.d_upload_pan.errors}"/>
+						<div *ngIf="submitted && d.d_upload_pan.errors" class="invalid-feedback">
+							<div *ngIf="d.d_upload_pan.errors.required">Upload PAN </div>
+						</div>
+						<div class="row col-sm-5">
+							<div class="col-sm-2 label label-table label-success">Is Verified</div>
+							<!-- <input id="verified" class="form-control form-control-line col-sm-8 m-l" name="Verified"> -->
+						</div>			
+					</div>
+					<hr>
+					<div class="form-group row">
+						<label class="col-md-3 m-b">Aadhar card</label>
+						<input type="file" id="upload_aadhar" class="dropify col-md-4" formControlName="d_upload_adhar" [ngClass]="{ 'is-invalid': submitted && d.d_upload_adhar.errors}"/>
+						<div *ngIf="submitted && d.d_upload_adhar.errors" class="invalid-feedback">
+							<div *ngIf="d.d_upload_adhar.errors.required">Upload Adhar </div>
+						</div>
+						<div class="row col-sm-5">
+							<div class="col-sm-2 label label-table label-danger">Not Verified</div>
+						</div>
+					</div>
+					<hr>
+					<div class="form-group row">
+						<label class="col-md-3 m-b">Driving Licence</label>
+						<input type="file" id="upload_driving_licence" class="dropify col-md-4" formControlName="d_upload_driving_licence" [ngClass]="{ 'is-invalid': submitted && d.d_upload_driving_licence.errors}"/>
+						<div *ngIf="submitted && d.d_upload_driving_licence.errors" class="invalid-feedback">
+							<div *ngIf="d.d_upload_driving_licence.errors.required">Upload Driving Licence </div>
+						</div>
+						<div class="row col-sm-5">
+							<div class="col-sm-2 label label-table label-success">Is Verified</div>
+							<!-- <input id="verified" class="form-control form-control-line col-sm-8 m-l" name="Verified"> -->
+						</div>					
+					</div>
+					<div class="col-lg-12 col-md-12">
+						<div class="card">
+							<h4 class="card-title">Upload Driver Image</h4>
+							<label for="input">Max Image Size 1 MB</label>
+							<input type="file" id="input-file-now-custom" class="dropify" (change)="getDriverProfile($event)" formControlName="d_profileimage" [ngClass]="{ 'is-invalid': submitted && d.d_profileimage.errors}"/>
+							<div *ngIf="submitted && d.d_profileimage.errors" class="invalid-feedback">
+				                <div *ngIf="d.d_profileimage.errors.required">Upload Driver Profile</div>
+				            </div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-12">
+							<button class="btn btn-success">Save Driver Info</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- Card End -->
+	<!-- ============================================================== -->
+	<!-- End PAge Content -->
+	<!-- ============================================================== -->
+<app-footer></app-footer>	

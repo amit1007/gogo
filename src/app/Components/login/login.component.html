@@ -1,0 +1,94 @@
+
+<section id="wrapper" class="login-register login-driver">
+	<div class="login-box card">
+		<div class="card-body">
+			<form [formGroup]="LoginForm" (ngSubmit)="onSubmit()" class="form-body text-center" id="loginform" action="my-profile.php">
+				<a href="javascript:void(0)" class="db"><img src="../assets/images/logo-icon.png" alt="Home" />
+				<!-- <br/><img src="../assets/images/logo-text.png" alt="Home" /> -->
+				</a>
+				<div class="form-group col-md-12 m-t-40">
+					<div class="row">
+						<div class="col-4">
+							<!-- <select class="form-control custom-select">
+								<option>Select Country Code</option>
+								<option selected="selected">+91</option>
+								<option>+65</option>
+							</select> -->
+							 <select class="form-control custom-select" formControlName="countrycode" [ngClass]="{ 'is-invalid': submitted && l.countrycode.errors}" [value]="91" >
+                                <!-- <option [value]="0">Select Country Code</option> -->
+                                <option [value]="91" selected="selected">+91</option>
+                            </select>
+                            <div *ngIf="submitted && l.countrycode.errors" class="invalid-feedback">
+                                <div *ngIf="l.countrycode.errors.required">Country is required</div>
+                            </div>
+						</div>
+						<div class="col-8 p-l-0">
+							<input class="form-control" type="text" placeholder="Mobile No" formControlName="mobile" [ngClass]="{ 'is-invalid': submitted && l.mobile.errors}">
+                                <div *ngIf="submitted && l.mobile.errors" class="invalid-feedback">
+	                                <div *ngIf="l.mobile.errors.required">Mobile number is required</div>
+	                                <div *ngIf="l.mobile.errors.minLength">Invalid mobile number</div>
+                            	</div>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="form-group">
+					<div class="col-md-12">
+						<input class="form-control" type="password" placeholder="Password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && l.password.errors }">
+                        <div *ngIf="submitted && l.password.errors" class="invalid-feedback">
+                            <div *ngIf="l.password.errors.required">Password is required</div>
+                            <div *ngIf="l.password.errors.minlength">Password must be at least 6 characters</div>
+                        </div>
+					</div>
+				</div> -->
+				<!-- <div class="form-group col-md-12">
+					<div class="d-flex no-block align-items-center">
+						<div class="custom-control custom-checkbox">
+							<input type="checkbox" class="custom-control-input" id="customCheck1" formControlName="rememberme">
+							<label class="custom-control-label" for="customCheck1">Remember me</label>
+						</div> 
+						<div class="ml-auto">
+							<a routerLink="/signup" routerLinkActive="active-link" id="forgot-pwd" class="text-muted" ><i class="fas fa-lock m-r-5"></i> Forgot password?</a>
+						</div>
+					</div>   
+				</div> -->
+				<div class="form-group text-center m-t-20">
+					<div class="col-md-12">
+						<button class="btn waves-effect waves-light btn-block btn-warning">Log In</button>
+					</div>
+				</div>
+				<!-- <div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
+						<div class="social">
+							<button class="btn btn-facebook waves-effect btn-circle waves-light" type="button"> <i class="fab fa-facebook"></i> </button>
+							<button class="btn btn-googleplus waves-effect btn-circle waves-light" type="button"> <i class="fab fa-google-plus"></i> </button>
+						</div>
+					</div>
+				</div> -->
+				<div class="form-group m-b-0">
+					<div class="col-sm-12 text-center">
+						Don't have an account? <a routerLink="/" routerLinkActive="active-link" class="m-l-5 a-btn"><b>Sign Up</b></a>
+					</div>
+				</div>
+			</form>
+			<form class="form-horizontal" id="recoverform" action="my-profile.php">
+				<div class="form-group">
+					<div class="col-xs-12">
+						<h3>Recover Password</h3>
+						<p class="text-muted">Enter your Email and instructions will be sent to you! </p>
+					</div>
+				</div>
+				<div class="form-group ">
+					<div class="col-xs-12">
+						<input class="form-control" type="text"  placeholder="Email">
+					</div>
+				</div>
+				<div class="form-group text-center m-t-20">
+					<div class="col-xs-12">
+						<button class="btn btn-warning btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Reset</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</section> 
+<router-outlet></router-outlet>  

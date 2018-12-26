@@ -1,0 +1,94 @@
+<app-header></app-header>
+<app-left-sidebar></app-left-sidebar>
+<div class="page-wrapper">
+	<div class="container-fluid">
+		<div class="row page-titles">
+			<div class="col-md-5 align-self-center">
+				<!-- <h4 class="text-themecolor">Notification Details</h4> -->
+			</div>
+			<div class="col-md-7 align-self-center text-right">
+				<div class="d-flex justify-content-end align-items-center">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+						<li class="breadcrumb-item active">Delivery Details</li>
+					</ol>
+					<!-- <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button> -->
+				</div>
+			</div>
+		</div>
+		<!-- Row -->
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-header bg-info">
+						<h4 class="m-b-0 text-white">Delivery Details</h4>
+					</div>
+					<div class="card-body">
+						<form action="invoice.php" method="post">
+							<div class="form-body">
+								<!-- <h3 class="card-title">Delivery Detail</h3>
+								<hr> -->
+								<div class="row">
+									<div class="col-md-12 col-xs-12 m-b-40">
+										<label class="control-label text-left">Receiving Pic:</label>
+										<div class="col-md-12 col-xs-12">
+											<img src="../assets/images/img3.jpg" alt="Flowers in Chania" width="460" height="345">
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<!--/span-->
+									<div class="col-md-6 col-xs-6">
+										<div class="form-group row">
+											<label class="control-label text-left col-6">Name:</label>
+											<div class="col-6">
+												<p class="form-control-static"> Rima </p>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6 col-xs-6">
+										<div class="form-group row">
+											<label class="control-label text-left col-6">Number:</label>
+											<div class="col-6">
+												<p class="form-control-static"> PL124RTC1246 </p>
+											</div>
+										</div>
+									</div>
+									<!--/span-->
+								</div>
+								<div class="row">
+									<div class="col-md-6 col-xs-6">
+										<div class="form-group row">
+											<label class="control-label text-left col-6">Notify Customer:</label>
+											<div class="col-6">
+												<p class="form-control-static"> Notify Customer </p>
+											</div>
+										</div>
+									</div>
+									<!--/span-->
+								</div>
+								<!-- <div class="row">
+									<div class="col-md-6 col-xs-6">
+										<div class="form-group row">
+											<label class="control-label text-left col-6">Accept / generate invoice to GGT:</label>
+											<div class="col-6">
+												<p class="form-control-static"> Payment </p>
+											</div>
+										</div>
+									</div>
+								</div> -->
+							</div>
+							<div class="form-actions">
+								<button type="submit" class="btn btn-success" id="invoice-success"> <i class="fa fa-check"></i> Accept / generate invoice to GGT</button>
+								<button type="button" class="btn btn-inverse"> <i class="fa fa-times"></i> Cancel Bid</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Row -->
+	</div>
+</div>
+<app-right-sidebar></app-right-sidebar>
+<app-footer></app-footer>

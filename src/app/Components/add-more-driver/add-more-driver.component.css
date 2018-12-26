@@ -1,0 +1,60 @@
+.form-control{
+	border: 0px;
+	border-bottom: 1px solid #ccc;
+	border-radius: 0px;
+	padding: 0px 10px;
+	line-height: 30px;
+	font-size: 1.4rem;
+	min-height: 25px;
+	height: 25px;
+	box-shadow: none;
+	-webkit-box-shadow:none;
+	transition: none;
+}
+.label{
+	padding-top: 0.7rem;
+}
+.btn-warning, .btn-warning:hover, .btn-warning.focus, .btn-warning:focus{
+	color: #fff;
+	background-color: #f0ad4e;
+	border-color: #eea236;
+}
+.btn-dark{	
+	background-color: #303030; 
+	color: #f7f200; 
+	border: 1px solid #000;
+	margin-right: 15px;
+}
+.btn-m{
+	margin-left: 5px;
+}
+.m-l{
+	margin-left: 15px;
+}
+.p-l{
+	padding-left: 0;
+}
+.m-0{
+	margin:0;
+}
+hr{
+	margin-right: 15px;
+}
+@media( max-width : 585px ){
+	form label{ font-size: 1.2rem;}
+	.card-title{
+		font-size: 15px;
+	}
+	.in-up{
+		padding-left: 0;
+		margin-bottom: 15px;
+	}
+	.var-doc{
+		padding: 0.8rem;
+	}
+}
+@media (max-width: 1023px){
+	.d-flex {
+		display: flex!important;
+	}
+}

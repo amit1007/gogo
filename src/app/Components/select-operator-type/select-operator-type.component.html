@@ -1,0 +1,46 @@
+<section id="wrapper" class="login-register login-driver">
+<div class="login-box card">
+        <div class="card-body">
+            <h4 class="card-title">Choose Type</h4>
+            <h6 class="card-subtitle">Use default tab as individual <code>moving goods for personal use.</code></h6>
+            <!-- Nav tabs -->
+            <form class="form-body" id="selectopratorform" action="#" method="post" [formGroup]="SelectOpratorForm" (ngSubmit)="onSubmit()">
+            <div class="vtabs customvtab">
+                <ul class="nav nav-tabs tabs-vertical" role="tablist">
+                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile3" role="tab" (click)="OperatorType('individual')"><span class="hidden-sm-up"><i class="ti-user"></i></span> <span class="hidden-xs-down"> INDIVIDUAL</span></a> </li>
+
+                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#home3" role="tab" (click)="OperatorType('business')"><span class="hidden-sm-up"><i class="fas fa-truck"></i></span> <span class="hidden-xs-down"> Multivehicle</span> </a> </li>
+                    
+                    <!-- <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#messages3" role="tab" (click)="OperatorType('broker')"><span class="hidden-sm-up"><i class="ti-email"></i></span> <span class="hidden-xs-down">Broker</span></a> </li> -->
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active p-20 p-t-0" id="profile3" role="tabpanel">
+                        <h4>Moving goods for personal use</h4>
+                        <p>E.g Moving goods for house shifting</p>
+                    </div>
+                    <div class="tab-pane" id="home3" role="tabpanel">
+                        <div class="p-20 p-t-0">
+                            <h4>Moving goods for business purpose</h4>
+                            <!-- <p>E.g Moving goods from shop,office</p> -->
+                        </div>
+                    </div>
+                    <!-- <div class="tab-pane p-20" id="messages3" role="tabpanel">
+                        <h4>Moving goods for personal use</h4>
+                        <p>E.g Moving goods for hhouse shifting</p>
+                    </div> -->
+                </div>
+            </div>
+            <div class="form-group text-center m-t-20">
+                <div class="col-xs-12">
+                    <!-- <a routerLink="/myprofile" routerLinkActive="active">
+                    <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Submit</button></a> -->
+                    <input formControlName="hiddenvalue" type="hidden">
+                    <button class="btn btn-block btn-warning">Next</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</section>
+<router-outlet></router-outlet>  

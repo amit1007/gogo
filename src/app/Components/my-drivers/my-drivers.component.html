@@ -1,0 +1,158 @@
+<app-header></app-header>
+<app-left-sidebar></app-left-sidebar>
+<!-- ============================================================== -->
+	<!-- Page wrapper  -->
+	<!-- ============================================================== -->
+	<div class="page-wrapper">
+		<!-- ============================================================== -->
+		<!-- Container fluid  -->
+		<!-- ============================================================== -->
+		<div class="container-fluid">
+			<!-- ============================================================== -->
+			<!-- Bread crumb and right sidebar toggle -->
+			<!-- ============================================================== -->
+			<div class="row page-titles">
+				<div class="col-md-5 align-self-center">
+					<h4 class="text-themecolor">My Drivers</h4>
+				</div>
+				<div class="col-md-7 align-self-center text-right">
+					<div class="d-flex justify-content-end align-items-center">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+							<li class="breadcrumb-item active">My Drivers</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+			<!-- ============================================================== -->
+			<!-- End Bread crumb and right sidebar toggle -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- Start Page Content -->
+			<!-- ============================================================== -->
+			<!-- Card -->
+			<div class="card">
+				<div class="card-body">
+					<!-- <h4 class="card-title">My Drivers</h4> -->
+					<div class="row">
+						<div class="col-md-5 align-self-center">
+							<h4 class="card-title">My Drivers</h4>
+						</div>
+						<div class="col-md-7 align-self-center text-right" style="padding-bottom:10px;">
+							<a routerLink="/adddriver" routerLinkActive="active" aria-expanded="false"><button class="btn btn-danger">Add Driver</button></a>
+						</div>
+					</div>
+					<div>
+					 	<table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+							<thead>
+								<tr>
+									<th style="width: 20%">
+									  <mfDefaultSorter by="d_name">Driver Name</mfDefaultSorter>
+									</th>
+									<th style="width: 20%">
+									  <mfDefaultSorter by="d_mobile">Driver Mobile Number</mfDefaultSorter>
+									</th>
+									<th style="width: 20%">
+									  <mfDefaultSorter by="d_working_hours_from">Working Hrs From </mfDefaultSorter>
+									</th>
+									<th style="width: 20%">
+									  <mfDefaultSorter by="d_working_hours_to">Working Hrs To</mfDefaultSorter>
+									</th>
+									<th style="width: 20%">
+									  <mfDefaultSorter by="city">Driver City</mfDefaultSorter>
+									</th>
+									<th style="width: 20%">
+									  <mfDefaultSorter by="city">Edit</mfDefaultSorter>
+									</th>
+									<th style="width: 20%">
+									  <mfDefaultSorter by="city">Delete</mfDefaultSorter>
+									</th>
+								</tr>
+							  </thead>
+							  <tbody>
+							  <tr *ngFor="let driver of mf.data">
+							      <td>{{driver.d_name}}</td>
+							      <td>{{driver.d_mobile}}</td>
+							      <td class="text-right">{{driver.d_working_hours_from}}</td>
+							      <td class="text-right">{{driver.d_working_hours_to}}</td>
+							      <td class="text-right">{{driver.city}}</td>
+							      <td class="text-right"><a routerLink="/adddriver" routerLinkActive="active" aria-expanded="false"><button class="btn btn-info">Edit</button></a></td>
+							      <td class="text-right"><a routerLink="/adddriver" routerLinkActive="active" aria-expanded="false"><button class="btn btn-danger">Delete</button></a></td>
+							  </tr>
+							  </tbody>
+							  <tfoot>
+							  <tr>
+							      <td colspan="4">
+							          <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+							      </td>
+							  </tr>
+							  </tfoot>
+						</table>
+					</div>
+					<!-- <div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>User Name</th>
+									<th>Pickup Address</th>
+									<th>Drop Address</th>
+									<th>Amount</th>
+									<th>Payment Status</th>
+									<th>Ride Status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><a href="javascript:void(0)">Komal Vora</a></td>
+									<td>28, Viman Nagar, Pune - 423672</td>
+									<td>135, Laxmi Road, Pune - 423676</td>
+									<td>Rs. 300</td>
+									<td>Paid</td>
+									<td>
+										<div class="label label-table label-success">Completed</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a href="javascript:void(0)">Gaurav Agarwal</a></td>
+									<td>68, Charu Apartments, Vishal Nagar, Pune</td>
+									<td>135, Baner, Pune - 423676</td>
+									<td>Rs. 300</td>
+									<td>Paid</td>
+									<td>
+									<div class="label label-table label-success">Completed</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a href="javascript:void(0)">Kartik Zahir Mutti</a></td>
+									<td>275, Shivaji Nagar, Pune - 423672</td>
+									<td>450, Tilak Road, Pune - 423676</td>
+									<td>Rs. 300</td>
+									<td>Paid</td>
+									<td>
+										<div class="label label-table label-success">Completed</div>
+									</td>
+								</tr>
+								<tr>
+									<td><a href="javascript:void(0)">Elias Sharaf</a></td>
+									<td>16, Hadapsar, Pune - 423672</td>
+									<td>2, Swargate, Pune - 423676</td>
+									<td>Rs. 300</td>
+									<td>Paid</td>
+									<td>
+										<div class="label label-table label-success">Completed</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div> -->
+				</div>
+			</div>
+			<!-- Card End -->
+	<!-- ============================================================== -->
+	<!-- End PAge Content -->
+	<!-- ============================================================== -->
+			<app-right-sidebar></app-right-sidebar>
+		</div>
+	</div>
+
+<app-footer></app-footer>	

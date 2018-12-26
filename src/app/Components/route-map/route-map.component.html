@@ -1,0 +1,128 @@
+<app-header></app-header>
+<app-left-sidebar></app-left-sidebar>
+<div class="page-wrapper">
+	<div class="container-fluid">	
+		<div class="row page-titles">
+			<div class="col-md-5 align-self-center">
+				<h4 class="text-themecolor">Map</h4>
+			</div>
+			<div class="col-md-7 align-self-center text-right">
+				<div class="d-flex justify-content-end align-items-center">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+						<li class="breadcrumb-item active">Map</li>
+					</ol>
+					<!-- <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button> -->
+				</div>
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Market with Info window</h4>
+				<button class="hide-btn" id="call-modal-btn" data-toggle="modal" data-target="#custom-model-myOTP">Enter OTP</button>
+				
+				<!-- <div id="markermap" class="gmaps"></div> -->
+				<agm-map [latitude]="lat" [longitude]="lng">
+					<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+				</agm-map>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-header bg-info">
+						<h4 class="m-b-0 text-white">Delivery Details</h4>
+					</div>
+					<div class="card-body">
+						<form action="invoice.php" method="post">
+							<div class="form-body">
+								<!-- <h3 class="card-title">Delivery Detail</h3>
+								<hr> -->
+								<div class="row">
+									<div class="col-md-12 col-xs-12 m-b-40">
+										<label class="control-label text-left">Receiving Pic:</label>
+										<div>
+										    <img *ngFor="let url of urls" [src]="url" class="rounded mb-3" width="180" height="150" class="pad-R">
+										</div>
+										<input type="file" multiple (change)="onFileChanged($event)">
+									</div>
+								</div>
+								<div class="row">
+									<!--/span-->
+									<div class="col-md-6 col-xs-6">
+										<div class="form-group row">
+											<label class="control-label text-left col-6">Name:</label>
+											<div class="col-6">
+												<p class="form-control-static"> Rima </p>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6 col-xs-6">
+										<div class="form-group row">
+											<label class="control-label text-left col-6">Number:</label>
+											<div class="col-6">
+												<p class="form-control-static"> PL124RTC1246 </p>
+											</div>
+										</div>
+									</div>
+									<!--/span-->
+								</div>
+								<div class="row">
+									<div class="col-md-6 col-xs-6">
+										<div class="form-group row">
+											<label class="control-label text-left col-6">Notify Customer:</label>
+											<div class="col-6">
+												<p class="form-control-static"> Notify Customer </p>
+											</div>
+										</div>
+									</div>
+									<!--/span-->
+								</div>
+								<!-- <div class="row">
+									<div class="col-md-6 col-xs-6">
+										<div class="form-group row">
+											<label class="control-label text-left col-6">Accept / generate invoice to GGT:</label>
+											<div class="col-6">
+												<p class="form-control-static"> Payment </p>
+											</div>
+										</div>
+									</div>
+								</div> -->
+							</div>
+							<div class="form-actions">
+								<button type="submit" class="btn btn-success" id="invoice-success"> <i class="fa fa-check"></i> Accept / generate invoice to GGT</button>
+								<button type="button" class="btn btn-inverse"> <i class="fa fa-times"></i> Cancel Bid</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="custom-model-myOTP" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;"  data-toggle="modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header text-center">
+				<h3>Start your trip</h3>
+			</div>
+			<div class="modal-body">
+				<form action="delivery-details.php">
+					<div class="form-group has-danger">
+						<label for="otp" class="control-label">Enter OTP:</label>
+						<input type="text" class="form-control" id="otp">
+						<small class="form-control-feedback">Please enter Start ride OTP </small>
+					</div>
+					<div class="modal-footer text-center">
+						<!-- <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button> -->
+						<button type="submit" (click)="closeModal('custom-model-myOTP')" class="btn btn-danger waves-effect waves-light">Submit OTP</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<app-right-sidebar></app-right-sidebar>
+<app-footer></app-footer>

@@ -1,0 +1,145 @@
+<div class="tab-content">
+	<form class="form-body" [formGroup]="adddriverForm" enctype="multipart/form-data" method="POST">
+		<div formArrayName="itemRows">
+			<div *ngFor="let itemrow of itemRows.controls; let i=index" [formGroupName]="i">
+				
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label class="col-md-12">Driver Name<sup class="sup-e">*</sup></label>
+						<div class="col-md-12">
+							<input type="text" class="form-control" formControlName="driver_name" id="">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-12">Driver Mobile Number<sup class="sup-e">*</sup></label>
+						<div class="col-md-12">
+							<input type="text" class="form-control" formControlName="driver_mob_num" id="">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label class="col-md-12">Driver Driving Licence Number<sup class="sup-e">*</sup></label>
+						<div class="col-md-12">
+							<input type="text" class="form-control" formControlName="driver_lic_num" id="">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-12">Validity Of Licence Number<sup class="sup-e">*</sup></label>
+						<div class="col-md-12">
+							<input type="text" class="form-control" formControlName="driver_lic_vali_num" id="">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label class="col-md-12">Aadhar Number Of Driver<sup class="sup-e">*</sup></label>
+						<div class="col-md-12">
+							<input type="text" class="form-control" formControlName="driver_aadhar_num" id="">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12 col-md-12">
+						<div class="card m-l">	
+							<!-- <label class="col-md-12">Upload Driver Profile Picture<sup class="sup-e">*</sup></label> -->
+							<h4 class="card-title">Upload Driver Profile Picture<sup class="sup-e">*</sup></h4>
+							<hr>
+							<div class="col-md-12 p-l">
+								<input type="file" formControlName="up_profile">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card m-l">
+							<h4 class="card-title">Upload Documents</h4>
+							<hr>
+							<div class="form-group">
+								<div class="row m-0">
+									<label class="col-md-3 p-0">PAN Card</label>
+									<input type="file" id="upload_pan" class="in-up dropify col-md-4" formControlName="veh_doc_pan" [ngClass]="{ 'is-invalid': submitted1 && v.veh_doc_pan.errors}"/>
+									<div *ngIf="submitted1 && v.veh_doc_pan.errors" class="invalid-feedback">
+										<div *ngIf="v.veh_doc_pan.errors.required">Upload PAN </div>
+									</div>
+									<div class="row col-sm-5">
+										<div class="col-sm-4 label var-doc label-success">Is Verified</div>
+										<!-- <input id="verified" class="form-control form-control-line col-sm-8 m-l" name="Verified"> -->
+									</div>
+								</div>			
+							</div>	
+							<hr>
+							<div class="form-group">
+								<div class="row m-0">
+									<label class="col-md-3 p-0">Aadhar card</label>
+									<input type="file" id="upload_aadhar" class="in-up dropify col-md-4" formControlName="veh_upload_adhar" [ngClass]="{ 'is-invalid': submitted1 && v.veh_upload_adhar.errors}"/>
+									<div *ngIf="submitted1 && v.veh_upload_adhar.errors" class="invalid-feedback">
+										<div *ngIf="v.veh_upload_adhar.errors.required">Upload Adhar </div>
+									</div>
+									<div class="row col-sm-5">
+										<div class="col-sm-4 label var-doc label-danger">Waiting for Verify</div>
+									</div>
+								</div>
+							</div>
+							<hr>
+							<div class="form-group">
+								<div class="row m-0">
+									<label class="col-md-3 p-0">Driving Licence</label>
+									<input type="file" id="upload_driving_licence" class="in-up dropify col-md-4" formControlName="veh_upload_driving_licence" [ngClass]="{ 'is-invalid': submitted1 && v.veh_upload_driving_licence.errors}"/>
+									<div *ngIf="submitted1 && v.veh_upload_driving_licence.errors" class="invalid-feedback">
+										<div *ngIf="v.veh_upload_driving_licence.errors.required">Upload Driving Licence </div>
+									</div>
+									<div class="row col-sm-5">
+										<div class="col-sm-4 label var-doc label-success">Is Verified</div>
+										<!-- <input id="verified" class="form-control form-control-line col-sm-8 m-l" name="Verified"> -->
+									</div>	
+								</div>				
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="d-flex flex-row-reverse">
+					<div class="p-2">
+						<div class="input-group-append">
+							<button class="btn" type="button" (click)="addNewRow()"><i class="fa fa-plus"></i></button>
+							<button *ngIf="i >= 1" (click)="deleteRow(i)" class="btn btn-danger"><i class="fa fa-minus"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row col-md-12">
+			<div class="form-group">
+				<div class="col-md-12 p-0">
+					<label class="custom-control custom-checkbox m-b-0">
+						<input type="checkbox" class="icheckbox_flat-yellow checked" id="minimal-checkbox-3" formControlName="veh_terms_condition" (change)="changeVTCondition($event.target.checked)" [checked]="is_veh_tc">
+
+					
+						<a href="#" data-toggle="modal" data-target=".bs-example-modal-lg" (click)="check_veh_terms_condition()">I have read and agree to the Terms and Conditions</a>
+					
+						<!-- <div *ngIf="submitted1 && v.veh_terms_condition.errors" class="invalid-feedback">
+							<div *ngIf="v.veh_terms_condition.errors.required">You must agree terms and conditions.</div>
+						</div> -->
+
+					</label>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row col-12">
+			<div class="form-group btn-m">
+				<div class="col-md-12">
+					<button class="btn btn-dark" type="button">Previous</button>
+					<button class="btn btn-warning" type="button">Next</button>
+				</div>
+			</div>
+		</div>
+		
+	</form>
+</div>

@@ -1,0 +1,290 @@
+<div class="tab-content">
+	<form class="form-body" [formGroup]="businessInfoForm" (ngSubmit)="onSubmitBusinessInfo()" enctype="multipart/form-data" method="POST">
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label class="col-md-12">Business Name <sup class="sup-e">*</sup></label>
+				<div class="col-md-12">
+					<input type="text" placeholder="Enter Business Name" class="form-control form-control-line" id="business_name" formControlName="op_bu_name" [ngClass]="{'is-invalid': submitted2 && b.op_bu_name.errors}">
+					<div *ngIf="submitted2 && b.op_bu_name.errors" class="invalid-feedback">
+			            <div *ngIf="b.op_bu_name.errors.required">Business name is required</div>
+			    	</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="m-l">
+					<h4 class="card-title">Address</h4>
+					<hr>
+				</div>
+			</div>
+		</div>
+		<div class="row"> 
+			<div class="form-group col-md-6">
+				<label class="col-md-12">Flat/shop/place <sup class="sup-e">*</sup></label>
+				<div class="col-md-12">
+					<input type="text" placeholder="Enter Flat/shop/place" class="form-control form-control-line" formControlName="op_bu_address_line_1" [ngClass]="{ 'is-invalid': submitted2 && b.op_bu_address_line_1.errors}">
+					<div *ngIf="submitted2 && b.op_bu_address_line_1.errors" class="invalid-feedback">
+		                <div *ngIf="b.op_bu_address_line_1.errors.required">Address is required</div>
+		        	</div>
+				</div>
+			</div>
+			 <div class="form-group col-md-6">
+				<label class="col-md-12">Street/Area</label>
+				<div class="col-md-12">
+					<input type="text" placeholder="Enter Street/Area" class="form-control form-control-line" formControlName="op_bu_address_line_2" [ngClass]="{ 'is-invalid': submitted2 && b.op_bu_address_line_2.errors}">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label class="col-md-12">Location</label>
+				<div class="col-md-12">
+					<input type="text" placeholder="Enter Location" class="form-control form-control-line" id="location" formControlName="op_bu_address_line_3" [ngClass]="{ 'is-invalid': submitted2 && b.op_bu_address_line_3.errors}">
+				</div>
+			</div>
+			<div class="form-group col-sm-6">
+	            <label class="col-md-12">Pincode <sup class="sup-e">*</sup></label>
+	            <div class="col-md-12">
+	                <input type="text" placeholder="Enter Pincode" class="form-control form-control-line" id="pincode" formControlName="op_bu_address_pin_code" [ngClass]="{ 'is-invalid': submitted2 && b.op_bu_address_pin_code.errors}" >
+					<div *ngIf="submitted2 && b.op_bu_address_pin_code.errors" class="invalid-feedback">
+	                    <div *ngIf="b.op_bu_address_pin_code.errors.required">Pincode is required</div>
+	            	</div>
+	            </div>
+	        </div>
+	    </div>
+		<div class="row">        
+	        <div class="form-group col-sm-6">
+	            <label class="col-md-12">Landmark <sup class="sup-e">*</sup></label>
+	            <div class="col-md-12">
+	                <input type="text" placeholder="Enter Landmark" class="form-control form-control-line" id="landmark" formControlName="op_bu_landmark" [ngClass]="{ 'is-invalid': submitted2 && b.op_bu_landmark.errors}">
+					<div *ngIf="submitted2 && b.op_bu_landmark.errors" class="invalid-feedback">
+	                    <div *ngIf="b.op_bu_landmark.errors.required">Landmark is required</div>
+	            	</div>
+	            </div>
+	        </div>
+	       	<div class="form-group col-sm-6">
+	            <label class="col-md-12">City</label>
+	            <div class="col-md-12">
+	                <select class="form-control custom-select" formControlName="op_bu_address_city" [ngClass]="{ 'is-invalid': submitted2 && b.op_bu_address_city.errors}" [value]="1">
+						<option [ngValue]="undefined" selected="selected">Select City</option>
+						<option [value]="1">Pune</option>
+						<option [value]="2">Mumbai</option>
+					</select>
+					<div *ngIf="submitted2 && b.op_bu_address_city.errors" class="invalid-feedback">
+	                    <div *ngIf="b.op_bu_address_city.errors.required">Select City</div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="row">
+	    	<div class="form-group col-sm-6 ">
+	            <label class="col-md-12">State</label>
+	            <div class="col-md-12">
+	                <select class="form-control custom-select" formControlName="op_bu_address_state" [ngClass]="{ 'is-invalid': submitted2 && b.op_bu_address_state.errors}" [value]="27">
+					<option [value]="0" selected="selected">Select State</option>
+					<option [value]="27">Maharashtra</option>
+					<option [value]="10">Goa</option>
+				</select>
+				<div *ngIf="submitted2 && b.op_bu_address_state.errors" class="invalid-feedback">
+	                <div *ngIf="b.op_bu_address_state.errors.required">Select State</div>
+	            </div>
+	            </div>
+			</div>
+			<div class="form-group col-sm-6">
+				<label class="col-md-12">GSTN <sup class="sup-e">*</sup></label>
+				<div class="col-md-12">
+					<input type="text" placeholder="Enter GSTN" class="form-control form-control-line" id="gstn" formControlName="op_bu_gstn_no" [ngClass]="{ 'is-invalid': submitted2 && b.op_bu_gstn_no.errors}">
+					<div *ngIf="submitted2 && b.op_bu_gstn_no.errors" class="invalid-feedback">
+		                <div *ngIf="b.op_bu_gstn_no.errors.required">Business GSTN No. is required</div>
+		        	</div>
+				</div>
+			</div>
+	    </div>
+		
+		<!-- <div class="form-group">
+			<label class="col-md-12">Vehicle Wheel Type</label>
+			<div class="col-md-12">
+				<select class="form-control form-control-line">
+					<option>Select Vehicle Wheel Type</option>
+					<option>3 Wheel</option>
+					<option>4 Wheel</option>
+				</select>
+			</div>
+		</div> -->
+		<div class="row">
+			<div class="form-group col-sm-6">
+				<label class="col-md-12">Email id for bills</label>
+				<div class="col-md-12">
+					<input type="email" placeholder="Enter Email" class="form-control form-control-line" name="email_for_bill" id="email_for_bill" formControlName="op_bu_email" [ngClass]="{ 'is-invalid': submitted2 && b.op_bu_email.errors}">
+					<div *ngIf="submitted2 && b.op_bu_email.errors" class="invalid-feedback">   
+		                <div *ngIf="b.op_bu_email.errors.pattern">Invalid Email id.</div>
+		        	</div>
+				</div>
+			</div>
+			<div class="form-group col-sm-6">
+				<label class="col-md-12">PAN</label>
+				<div class="col-md-12">
+					<input type="text" placeholder="Enter PAN Number" class="form-control form-control-line" formControlName="op_bu_pan_no" [ngClass]="{ 'is-invalid': submitted2 && b.op_bu_pan_no.errors}">
+					<!-- <div *ngIf="submitted2 && b.op_bu_pan_no.errors" class="invalid-feedback">   
+		                <div *ngIf="b.op_bu_pan_no.errors.pattern">Invalid PAN.</div>
+		        	</div> -->
+				</div>
+			</div>
+		</div>
+		<div class="row"> 
+			<div class="col-md-12">
+				<div class="m-l">
+					<h4 class="card-title">Operator Standard Charge</h4>
+					<hr>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+	        <div class="form-group col-sm-6">
+	            <label class="col-md-12">Minimum Charge <sup class="sup-e">*</sup></label>
+	            <div class="col-md-12">
+	                <input type="text" placeholder="Enter Minimum Charge" class="form-control form-control-line" id="pincode" formControlName="op_bu_base_charge" [ngClass]="{ 'is-invalid': submitted2 && b.op_bu_base_charge.errors}" >
+					<div *ngIf="submitted2 && b.op_bu_base_charge.errors" class="invalid-feedback">
+	                    <div *ngIf="b.op_bu_base_charge.errors.required">Enter base amount</div>
+	            	</div>
+	            </div>
+	        </div>
+	        <div class="form-group col-sm-6">
+	            <label class="col-md-12">Per/Km <sup class="sup-e">*</sup></label>
+	            <div class="col-md-12">
+	                <input type="text" placeholder="per kilometer" class="form-control form-control-line" id="landmark" formControlName="op_bu_per_km" [ngClass]="{ 'is-invalid': submitted2 && b.op_bu_per_km.errors}">
+					<div *ngIf="submitted2 && b.op_bu_per_km.errors" class="invalid-feedback">
+	                    <div *ngIf="b.op_bu_per_km.errors.required">Enter per/km amount</div>
+	            	</div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="row">
+			<div class="col-md-12">
+				<div class="card m-l">
+					<h4 class="card-title">Loader Availability</h4>
+					<hr>	
+
+					<div class="form-group">
+						<label>Loader Available</label>
+						<div class="row m-0">
+							<div class="col-sm-4">
+								<label>
+									<input type="radio" class="" value="0" formControlName="op_bu_loader_available" [ngClass]="{ 'is-invalid': submitted2 && b.op_bu_loader_available.errors}" (click)="checkloaderAvailability($event.target.value)"> No
+								</label>
+							</div>
+							<div class="col-sm-4">
+								<label>
+									<input type="radio" class="" value="1" formControlName="op_bu_loader_available" [ngClass]="{ 'is-invalid': submitted2 && b.op_bu_loader_available.errors}" (click)="checkloaderAvailability($event.target.value)"> Yes
+								</label>
+
+								<div *ngIf="submitted2 && b.op_bu_loader_available.errors" class="invalid-feedback">   
+					                <div *ngIf="b.op_bu_loader_available.errors.pattern">Select loader available</div>
+					        	</div>
+					        </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" *ngIf="isLoaderAvailable">
+	        <div class="form-group col-sm-6">
+	            <label class="col-md-12">No. of person</label>
+	            <div class="col-md-12">
+	                <input type="text" placeholder="Enter number of person" class="form-control form-control-line" id="pincode" formControlName="op_bu_no_person" [ngClass]="{ 'is-invalid': submitted2 && b.op_bu_no_person.errors}" >
+					<!-- <div *ngIf="submitted2 && b.op_bu_no_person.errors" class="invalid-feedback">
+	                    <div *ngIf="b.op_bu_no_person.errors.required">Enter number no. of person</div>
+	            	</div> -->
+	            </div>
+	        </div>
+	        <div class="form-group col-sm-6">
+	            <label class="col-md-12">Charges/person</label>
+	            <div class="col-md-12">
+	                <input type="text" placeholder="Enter loader charges per person" class="form-control form-control-line" id="landmark" formControlName="op_bu_charge_per_person" [ngClass]="{ 'is-invalid': submitted2 && b.op_bu_charge_per_person.errors}">
+					<!-- <div *ngIf="submitted2 && b.op_bu_charge_per_person.errors" class="invalid-feedback">
+	                    <div *ngIf="b.op_bu_charge_per_person.errors.required">Enter amount per person</div>
+	            	</div> -->
+	             </div>
+	        </div>
+	    </div>
+	    <div class="row">
+		    <div class="form-group">
+				<div class="col-md-12">
+					<label class="custom-control custom-checkbox m-b-0">
+					 	<input type="checkbox" class="icheckbox_flat-yellow checked" id="minimal-checkbox-3" formControlName="bu_terms_condition" [ngClass]="{ 'is-invalid': submitted2 && b.bu_terms_condition.errors}" (change)="changeBusinessCondition($event.target.checked)" [checked]="is_tc" >
+
+						<a href="#" data-toggle="modal" data-target=".bs-example-modal-lg" (click)="check_terms_condition()">I have read and agree to the Terms and Conditions</a>
+						
+						<div *ngIf="submitted2 && b.bu_terms_condition.errors" class="invalid-feedback">
+		                	<div *ngIf="b.bu_terms_condition.errors.required">You must agree terms and conditions.</div>
+			            </div>
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group m-l">
+				<div class="col-sm-12">
+					<button type="button" class="btn waves-effect waves-light btn-dark">Previous</button>
+					<button class="btn waves-effect waves-light btn-warning">Next</button>
+				</div>
+			</div>
+		</div>
+	</form> 
+</div>
+
+<!-- <form>
+<div class="form_div_border_style">
+	<div class="form-group">
+		<label class="col-md-12">Base Location/Vehicle stand Location</label>
+		<div class="col-md-12">
+			<input type="text" placeholder="Enter Base Location" class="form-control form-control-line">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-12">Vehicle/Driver Name</label>
+		<div class="col-md-12">
+			<input type="text" placeholder="Enter Vehicle/Diver Name" class="form-control form-control-line">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-12">Vehicle No</label>
+		<div class="col-md-12">
+			<input type="text" class="col-2 form-control form-control-line" placeholder="MH">
+			<input type="text" class="col-3 form-control form-control-line" placeholder="12">
+			<input type="text" class="col-3 form-control form-control-line" placeholder="AD">
+			<input type="text" class="col-3 form-control form-control-line" Placeholder="9066">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-12">Driver Phone No</label>
+		<div class="col-md-12">
+			<input type="text" placeholder="Enter Driver Phone No" class="form-control form-control-line">
+		</div>
+	</div>
+	<div class="col-md-12">
+		<button class="btn btn-danger" type="button">Add More+</button>
+	</div>
+</div>
+<div class="col-lg-12 col-md-12 m-t-20">
+	<div class="card">
+			<h4 class="card-title">Upload Vehicle Images (Max 4 Images)</h4>
+			<label for="input-file-now-custom-1">Max Image Size 1 MB</label>
+			<input type="file" id="input-file-now-custom-1" class="dropify" data-default-file="../assets/node_modules/dropify/src/images/vehicle-images.jpg" />
+	</div>
+</div>
+<div class="form-group m-t-25">
+	<div class="col-md-12">
+		<label class="custom-control custom-checkbox m-b-0">
+			<input type="checkbox" class="custom-control-input">
+			<span class="custom-control-label">I have read and agree to the <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">Terms and Conditions</a></span>
+		</label>
+	</div>
+</div>
+<div class="form-group">
+	<div class="col-sm-12">
+		<button class="btn btn-success">Save Driver Details</button>
+	</div>
+</div>
+</form> -->

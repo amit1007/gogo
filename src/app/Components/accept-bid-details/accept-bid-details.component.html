@@ -1,0 +1,140 @@
+<app-header></app-header>
+<app-left-sidebar></app-left-sidebar>
+<div class="page-wrapper">
+	<div class="container-fluid">
+		<div class="row page-titles">
+			<div class="col-md-5 align-self-center">
+				<h4 class="text-themecolor">Bid Details</h4>
+			</div>
+			<div class="col-md-7 align-self-center text-right">
+				<div class="d-flex justify-content-end align-items-center">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+						<li class="breadcrumb-item active">Notification Details</li>
+						<li class="breadcrumb-item active">Bid Details</li>
+					</ol>
+					<!-- <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button> -->
+				</div>
+			</div>
+		</div>
+				<div class="row">
+			<div class="col-lg-12">
+				<div class="card">
+					<div class="card-header bg-info">
+						<h4 class="m-b-0 text-white">Other Bid Details</h4>
+					</div>
+					<div class="card-body">
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="card">
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table color-bordered-table primary-bordered-table">
+											<thead>
+												<tr>
+													<th>#</th>
+													<th>Enter/Selection</th>
+													<th>Vehicle ID</th>
+													<th>Pickup Time</th>
+													<th>Enter Amount</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>1</td>
+													<td>Select</td>
+													<td>1ABCX256YRFH</td>
+													<td>12 A.M</td>
+													<td>99</td>
+												</tr>
+												<tr>
+													<td>2</td>
+													<td>Select</td>
+													<td>12SE23SDKNS34</td>
+													<td>1 P.M</td>
+													<td>110</td>
+												</tr>
+												<tr>
+													<td>3</td>
+													<td>Select</td>
+													<td>SDGSDGSDG94</td>
+													<td>5 A.M</td>
+													<td>250</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-header bg-info">
+						<h4 class="m-b-0 text-white">Enter Bid Details</h4>
+					</div>
+						<form action="#" method="post">
+							<div class="form-body">
+								<!-- <h3 class="card-title">Enquiry Detail</h3>
+								<hr> -->
+								<div class="row p-t-20">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label class="control-label">Select Driver</label>
+											<!-- <input type="text" id="selection" class="form-control" placeholder="Enter /selection"> -->
+											<select class="form-control custom-select" id="selection">
+                                                <option value="">Driver1</option>
+                                                <option value="">Driver2</option>
+                                                <option value="">Driver3</option>
+                                                <option value="">Driver4</option>
+                                            </select>
+										</div>
+									</div>
+									<!-- <div class="form-group">
+                                        <label class="col-md-12">Gender</label>
+                                        <div class="col-md-12">
+                                            <select class="form-control custom-select">
+                                                <option value="">Male</option>
+                                                <option value="">Female</option>
+                                            </select>
+                                        </div>
+                                    </div> -->
+									<div class="col-md-6">
+										<div class="form-group">
+											<label class="control-label">Select Vehicle ID</label>
+											<!-- <input type="text" id="vehicle_id" class="form-control" placeholder="Vehicle ID"> -->
+											<select class="form-control custom-select" id="vehicle_id">
+                                                <option value="">MH123003</option>
+                                                <option value="">MH151011</option>
+                                                <option value="">MH146904</option>
+                                                <option value="">MH129000</option>
+                                            </select>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label class="control-label">Pickup time</label>
+											<input type="text" id="pickup_time" class="form-control" placeholder="Pickup time">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label class="control-label">Enter amount</label>
+											<input type="text" id="amount" class="form-control" placeholder="Amount">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-actions">
+								<button type="button" class="btn btn-success" id="save-success" data-toggle="modal" data-target="#myModal" (click)="saveBid()" > <i class="fa fa-check"></i> Save Bid</button>
+								<!-- <button type="button" class="btn btn-inverse">Cancel Bid</button> -->
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<app-right-sidebar></app-right-sidebar>
+<app-footer></app-footer>

@@ -1,0 +1,181 @@
+<div class="tab-content">
+	<form class="form-body" [formGroup]="bankInfoForm" (ngSubmit)="onSubmitBankInfo()">
+		<!--subscription design start-->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="m-l">
+					<h4 class="card-title">Select Subscription</h4>
+					<hr>
+				</div>
+			</div>
+			<div class="form-group col-sm-6">
+				<label class="col-md-12">Subscription <sup class="sup-e">*</sup></label>
+				<div class="col-md-12">
+					<select class="form-control custom-select" formControlName="op_subscription" (change)="onSearchChange($event.target.value)">
+						<option [ngValue]="undefined" selected="selected">Select Subscription</option>
+						<option [ngValue]="1">GoGoTrux Partner</option>
+						<option [ngValue]="2">GoGoTrux basic (3W)</option>
+						<option [ngValue]="3">GoGoTrux lite (3W)</option>
+						<option [ngValue]="4">GoGo trux -Standard (3/4W)</option>
+						<option [ngValue]="5">GoGo Trux Gold (3/4W)</option>
+						<option [ngValue]="6">GoGo Trux Diamond (4W)</option>
+						<option [ngValue]="7">GoGo Trux Multivehicle (4W)</option>
+					</select>
+				</div>
+
+				<div class="col-md-12">
+					<div [innerHTML]="content"></div>
+				</div>
+			</div>
+		</div>
+		<!--subscription design end-->
+		<hr>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="m-l">
+					<h4 class="card-title">Enter Bank Details</h4>
+					<hr>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label class="col-md-12">Name (As per bank account)</label>
+				<div class="col-md-12">
+					<input type="text" placeholder="Enter Name" class="form-control form-control-line" formControlName="op_name" id="name" [ngClass]="{ 'is-invalid': is_bank_submitted && bb.op_name.errors}">
+
+					<div *ngIf="is_bank_submitted && bb.op_name.errors" class="invalid-feedback">
+						<div *ngIf="bb.op_name.errors.required">Name is required</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-12">Bank Name</label>
+				<div class="col-md-12">
+					<input type="text" placeholder="Enter Bank Name" class="form-control form-control-line" id="bank-name" formControlName="op_bank_name" [ngClass]="{ 'is-invalid': is_bank_submitted && bb.op_bank_name.errors}">
+					<div *ngIf="is_bank_submitted && bb.op_bank_name.errors" class="invalid-feedback">
+						<div *ngIf="bb.op_bank_name.errors.required">Bank name is required</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-md-6">
+				<label class="col-md-12">Account Number</label>
+				<div class="col-md-12">
+					<input type="text" placeholder="Enter Payment Bank Account Number" class="form-control form-control-line" id="op-payment-bank" formControlName="op_bank_account_number" [ngClass]="{ 'is-invalid': is_bank_submitted && bb.op_bank_account_number.errors}">
+					<div *ngIf="is_bank_submitted && bb.op_bank_account_number.errors" class="invalid-feedback">
+						<div *ngIf="bb.op_bank_account_number.errors.required">Bank name is required</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-12">IFSC Code</label>
+				<div class="col-md-12">
+					<input type="text" placeholder="Enter IFSC Code" class="form-control form-control-line" formControlName="op_bank_ifsc" id="IFSC_code" [ngClass]="{ 'is-invalid': is_bank_submitted && bb.op_bank_ifsc.errors}">
+					<div *ngIf="is_bank_submitted && bb.op_bank_ifsc.errors" class="invalid-feedback">
+						<div *ngIf="bb.op_bank_ifsc.errors.required">Bank IFSC Code is required</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-sm-6">
+				<label class="col-md-12">Payment Mode <sup class="sup-e">*</sup></label>
+				<div class="col-md-12">
+					<select class="form-control custom-select" formControlName="op_paymentmode">
+						<option [ngValue]="undefined" selected="selected">Select Payment mode</option>
+						<option [ngValue]="1">Cash</option>
+						<option [ngValue]="2">Digital</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-12">Deposite</label>
+				<div class="col-md-12">
+					<input type="text" placeholder="3000" class="form-control form-control-line" id="deposite" formControlName="op_deposite">
+					<!-- <div *ngIf="is_bank_submitted && bb.op_bank_account_number.errors" class="invalid-feedback">
+						<div *ngIf="bb.op_bank_account_number.errors.required">Bank name is required</div>
+					</div> -->
+				</div>
+			</div>
+		</div>
+		<div class="row"> 
+			<div class="form-group m-l m-t-25">
+				<div class="col-md-12 p-0">
+					<label class="custom-control custom-checkbox m-b-0">
+						<input type="checkbox" class="icheckbox_flat-yellow checked" formControlName="bank_agree_terms_condition" [ngClass]="{ 'is-invalid': is_bank_submitted && bb.bank_agree_terms_condition.errors}" (change)="changeBankCondition($event.target.checked)" [checked]="is_bank_tc" >
+						<a href="#" data-toggle="modal" data-target=".bs-example-modal-lg" (click)="check_bank_terms_condition()">I have read and agree to the Terms and Conditions</a>
+						<!-- </span> -->
+						<div *ngIf="is_bank_submitted && bb.bank_agree_terms_condition.errors" class="invalid-feedback">
+							<div *ngIf="bb.bank_agree_terms_condition.errors.required">Agree to Terms and Conditions</div>
+						</div>
+						<!-- <span class="custom-control-label">I have read and agree to the <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">Terms and Conditions</a></span> -->
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group m-l">
+				<div class="col-sm-12">
+					<button type="button" class="btn waves-effect waves-light btn-dark">Previous</button>
+					<button class="btn waves-effect waves-light btn-warning">Pay</button>
+				</div>
+			</div>
+		</div>
+
+	</form>
+</div>
+<!-- <form class="form-body" action="post">
+	<div class="form-group">
+		<label class="col-md-12">Name</label>
+		<div class="col-md-12">
+			<input type="text" placeholder="Enter Name" class="form-control form-control-line" name="name" id="name">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-12">Bank Name</label>
+		<div class="col-md-12">
+			<input id="bank_name" class="form-control form-control-line" name="bank_name" placeholder="Enter Bank Name">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-12">Bank Branch</label>
+		<div class="col-md-12">
+			<input type="text" placeholder="Enter Bank Branch" class="form-control form-control-line" name="bank_branch" id="bank_branch">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-12">IFSC Code</label>
+		<div class="col-md-12">
+			<input type="text" placeholder="Enter IFSC Code" class="form-control form-control-line" name="IFSC_code" id="IFSC_code">
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-md-12">Wallet</label>
+		<div class="col-md-12">
+			<input type="text" placeholder="Enter" class="form-control form-control-line" name="wallet" id="wallet">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-12">Payments Bank</label>
+		<div class="col-md-12">
+			<input type="text" placeholder="Enter Payment Bank" class="form-control form-control-line">
+		</div>
+	</div>
+	<div class="form-group m-t-25">
+		<div class="col-md-12">
+			<label class="custom-control custom-checkbox m-b-0">
+				<input type="checkbox" class="custom-control-input">
+				<span class="custom-control-label">I have read and agree to the <a href="#" data-toggle="modal" data-target=".bs-example-modal-lg">Terms and Conditions</a></span>
+			</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-12">
+			<button class="btn btn-success">Save Bank Details</button>
+		</div>
+	</div>
+</form> -->
